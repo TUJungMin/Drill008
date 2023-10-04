@@ -62,7 +62,6 @@ class b_Ball:
     def draw(self):
      self.image.clip_draw(0, 0, 41, 41, self.x, self.y)
 
-
 def reset_world():
     global grass
     global team, small_Balls, big_Balls

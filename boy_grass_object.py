@@ -43,7 +43,7 @@ class s_Ball:
 
     def draw(self):
 
-       self.image.clip_draw(0, 0, 41, 41, self.x, self.y)
+       self.image.draw(self.x,self.y)
 
 
 class b_Ball:
@@ -60,7 +60,8 @@ class b_Ball:
             self.y += speed
 
     def draw(self):
-     self.image.clip_draw(0, 0, 41, 41, self.x, self.y)
+     self.image.draw(self.x,self.y)
+
 
 def reset_world():
     global grass

@@ -37,10 +37,11 @@ class s_Ball:
 
     def update(self):
         global speed
-        speed = random.randint(-10, -5)
-        if self.y >= 70:
+        speed = random.randint(-15, -1)
+        if self.y >= 65:
             self.y += speed
-
+            if self.y <= 65:
+                self.y = 65
     def draw(self):
 
        self.image.draw(self.x,self.y)
@@ -55,9 +56,11 @@ class b_Ball:
 
     def update(self):
         global speed
-        speed = random.randint(-10, -5)
-        if self.y >= 80:
+        speed = random.randint(-15, -1)
+        if self.y >= 75:
             self.y += speed
+            if self.y <= 75:
+                self.y = 75
 
     def draw(self):
      self.image.draw(self.x,self.y)

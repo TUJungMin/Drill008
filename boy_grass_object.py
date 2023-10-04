@@ -1,6 +1,7 @@
 from pico2d import *
 import random
 
+
 # Game object class here
 
 class Boy:
@@ -8,6 +9,7 @@ class Boy:
         self.x, self.y = random.randint(0, 300), 90
         self.frame = 0
         self.image = load_image('run_animation.png')
+
     def update(self):
         self.frame = (self.frame + 1) % 8
         self.x += 5
@@ -26,29 +28,55 @@ class Grass:
     def update(self):
         pass
 
-class Ball:
+
+class s_Ball:
     def __init__(self):
+
+        self.x, self.y = random.randint(0, 800), 590
+        self.image = load_image('ball21x21.png')
+
+    def update(self):
+        global speed
+        speed = random.randint(-10, -1)
+        if self.y >= 60:
+            self.y += speed
+
+    def draw(self):
+
+       self.image.clip_draw(0, 0, 41, 41, self.x, self.y)
+
+
+class b_Ball:
+    def __init__(self):
+
         self.x, self.y = random.randint(0, 800), 590
         self.image = load_image('ball41x41.png')
 
+
     def update(self):
-        self.y -= 5
+        global speed
+        speed = random.randint(-10, -1)
+        if self.y >= 60:
+            self.y += speed
 
     def draw(self):
-        self.image.clip_draw(0, 0, 41, 41, self.x, self.y)
+     self.image.clip_draw(0, 0, 41, 41, self.x, self.y)
 
 
 def reset_world():
     global grass
-    global team,Balls
+    global team, small_Balls, big_Balls
     global world
+    ball_size_num = random.randint(0,20)
     world = []
     grass = Grass()
     world.append(grass)
     team = [Boy() for i in range(10)]
-    Balls = [Ball() for i in range(20)]
+    small_Balls = [s_Ball() for i in range(ball_size_num)]
+    big_Balls = [b_Ball() for i in range(20-ball_size_num)]
     world += team
-    world += Balls
+    world += small_Balls
+    world += big_Balls
 
 
 def update_world():
